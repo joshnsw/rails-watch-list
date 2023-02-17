@@ -1,4 +1,6 @@
-<h1><%=@list.name%></h1>
+<h1><%=@list.name%></h1>   <p><%= link_to "Add new bookmark", new_list_bookmark_path(@list) %></p>
+
+<div class="item card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @list.photo.attached? ? cl_image_path(@list.photo.key) : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPQDYau3Hs4-xw1i8jVSUY4BlF4FLmg8lQqg&usqp=CAU' %>)">
 
 <%@bookmarks.each do |bookmark|  %>
  <div>
@@ -7,5 +9,3 @@
      <p><%= link_to 'Delete', bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete task?" }%></p>
   </div>
 <%end %>
-
-<%= link_to "Add new bookmark", new_list_bookmark_path(@list) %>
